@@ -1,0 +1,841 @@
+//Vars
+$radius : 26px;
+$gradient : linear-gradient(144deg, rgba(241,198,103,1) 0%, rgba(249,214,135,1) 100%);
+$font : 'Jost', sans-serif;
+$boxshadow : 0px 0px 50px rgba(84 84 84 / 39%);
+$transition : all 0.45s ease-in-out;
+$lightBg : #fbfbfb;//#F5F5F5;
+$inset : inset 0px 3px 6px rgb(0 0 0 / 19%);
+$iconfont : "Font Awesome 6 Pro";
+$fontColor : #313131;
+$lightColor : #a9a9a9;
+
+$lightBlueWhite: #F1FCFF;
+
+$gradientOff : linear-gradient(144deg, #F1315F 0%, #EF1FC5 100%);
+$gradientOn : linear-gradient(144deg, #12EB96 0%, #2BD4B7 100%);
+
+$berryPink : #f591a1;
+$berryPinkGradient : linear-gradient(to right top, #f591a1, #f87da1, #f869a6, #f454b0, #eb3fbe);
+//darkmode
+
+$darkbg : #131921; //#09090b;
+$darkbox : #222932;
+$blueberry : #6c49fb;
+$blueberryGradient : linear-gradient(to right top, #6c49fb, #9541f2, #b338e7, #cc2fdc, #e027d0);
+$darkmodeborder : #343436;
+
+$darkmodefont : #eef1f7;
+$darkinset : inset 0px 3px 6px rgb(0 0 0 / 74%);
+$darkboxshadow : 0px 0px 50px rgb(255 82 170 / 23%);
+// STYLE
+
+* {
+  padding: 0px;
+}
+
+body {
+  margin: 0 auto;
+  background: $gradient;
+  font-family: $font;
+  font-weight: 300;
+  color: $fontColor;
+  .darkmode & {
+    color: $darkmodefont;
+  }
+  @media only screen and (min-width: 820px) {
+    margin: 0px 20px;
+  }
+  &.load-data {
+    overflow: hidden;
+  }
+}
+
+h1 {    
+  color: $fontColor;
+  .darkmode & {
+    color: $darkmodefont;
+  }
+  margin-left: -4px;
+  font-size: 71px;
+  line-height: 1.3;
+  font-weight: 300;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+  @media only screen and (min-width: 820px) {
+    padding: 0px;
+  }
+}
+
+h3 {
+  color: $fontColor;
+  .darkmode & {
+    color: $darkmodefont;
+  }
+  font-size: 34px;
+  font-weight: 300;
+  margin-top: 0px;
+  line-height: 1.5;
+  max-width: 350px;
+  padding: 0px 20px;
+  @media only screen and (min-width: 820px) {
+    padding: 0px;
+  }
+}
+
+h5 {
+  color: $lightColor;
+  .darkmode & {
+    color: $darkmodefont;
+  }
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  padding: 0px 20px;
+  @media only screen and (min-width: 820px) {
+    padding: 0px;
+  }
+}
+
+.outer {
+  position: relative;
+  opacity: 1;
+  max-width: 1650px;
+  background: $lightBlueWhite;
+  .darkmode & {
+    background: $darkbg;
+  }
+  margin: 0 auto;
+  top: 0px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .load-data & {
+    transition: $transition;
+    top: 200px;
+    opacity: 0;
+  }
+  .show-data & {
+    display: none;
+  }
+  @media only screen and (min-width: 820px) {
+    border-radius: $radius;
+    padding: 50px;
+    margin-top: 60px;
+  }
+  @media only screen and (min-width: 1300px) {
+    padding: 100px 100px 50px 100px;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: auto;
+    height: 60px;    
+    padding: 20px;
+    @media only screen and (min-width: 820px) {
+      height: 100px;
+      padding: 0px;
+    }
+  }
+  div {
+    display: flex;
+    a {
+      border-radius: $radius;
+      background: $gradient;
+      color: white;
+      text-decoration: none;
+      position: relative;
+      font-size: 16px;
+      padding: 15px 25px;
+      box-shadow: $boxshadow;
+      .darkmode & {
+        box-shadow: $darkboxshadow;
+      }
+      @media only screen and (min-width: 820px) {
+        transition: $transition;
+        transform: scale(1);
+        padding: 20px 40px;
+        font-size: 21px;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          border-radius: $radius;
+          background: black;
+          opacity: 0;
+          transition: $transition;
+        }
+        &:hover {
+          transform: scale(1.06);
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+      span {
+        position: relative;
+        z-index: 2;
+      }
+      i {
+        margin-left: 15px;
+      }
+    }
+  }
+  .switch {
+    padding: 15px 25px;
+    margin-right: 20px;
+    border-radius: $radius;
+    position: relative;
+    background: $lightBg;
+    box-shadow: $inset;
+    border: solid 0.2px $lightColor;
+    .darkmode & {
+      background: $darkbox;
+      box-shadow: $darkinset;
+      border: solid 0.2px $darkmodeborder;
+    }
+    @media only screen and (min-width: 820px) {
+      transition: $transition;
+      cursor: pointer;
+      padding: 20px 90px;
+      margin-right: 50px;
+      transform: scale(1);
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    &:after {
+      .darkmode & {
+        content: '\f672';
+        @media only screen and (min-width: 820px) {
+          left: calc(100% - 64px);
+        }
+      }
+      content: '\f0eb';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: 300;
+      font-family: $iconfont;
+      position: absolute;
+      background: $gradient; 
+      transition: $transition;
+      box-shadow: $inset;
+      font-size: 20px;
+      border-radius: $radius;
+      top: 4px;
+      left: 2.5px; 
+      width: 45px;
+      height: 43px;
+      @media only screen and (min-width: 820px) {
+        top: 7px;
+        left: 7px;   
+        width: 55px;
+        height: 53px;
+      }
+    }
+  }
+}
+
+.massive-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.col {
+    display: flex;
+    flex-flow: column;
+    @media only screen and (min-width: 900px) {
+        flex-flow: row;
+    }
+    justify-content: space-between;
+    .two-col {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-flow: column;
+      @media only screen and (min-width: 900px) {
+        width: calc(50% - 80px);
+      }
+    }
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  @media only screen and (min-width: 820px) {
+    padding: 0px;
+  }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      @media only screen and (min-width: 820px) {
+        left: 0;
+      }
+      width: 29px;
+      height: 65px;
+      border-radius: $radius;
+      background: $gradient;
+      box-shadow: $inset;
+    }
+  input {
+    width: 100%;
+    border: 0px;
+    color: $fontColor;
+    .darkmode & {
+      color: $darkmodefont;
+    }
+    font-size: 35px;
+    padding: 15px 30px 15px 60px;
+    font-weight: 300;    
+    max-width: 300px;
+    background: transparent; 
+    &::placeholder {
+      color: $lightColor;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+    button {
+      border: 0px;
+      background: $lightBlueWhite; 
+      font-size: 35px;
+      color: $lightColor;
+      cursor: pointer;
+      border: solid 0.2px $lightColor;
+      padding: 15px;
+      border-radius: 28px;
+      .darkmode & {
+        background: $darkbox;
+        border: solid 0.2px $darkmodeborder;
+      }
+      @media only screen and (min-width: 820px) {
+        box-shadow: 0px;
+        transition: $transition;
+        &:hover {
+          background: $lightBg;
+          box-shadow: $inset;
+          .darkmode & {
+            background: $darkbox;
+            box-shadow: $darkinset;
+          }
+        }
+      }
+    }
+}
+
+.api-list {
+  box-shadow: $boxshadow;
+  background: white;
+  .darkmode & {
+    background: $darkbox;
+    box-shadow: $darkboxshadow;
+  }
+  padding: 40px;
+  margin-top: 100px;
+  @media only screen and (min-width: 900px) {
+    margin-top: 0px;
+    border-radius: $radius;
+  }
+  @media only screen and (min-width: 1080px) {
+    padding: 40px 100px 40px 40px;
+  }
+        
+  p {
+    font-size: 20px;
+    position: relative;
+    padding-right: 84px;
+    width: calc(100% - 84px);
+    margin-bottom: 25px;
+    word-break: break-all;
+    color: $fontColor;
+    .darkmode & {
+      color: $darkmodefont;
+    }
+    &:after {
+      content: '';
+      box-shadow: $inset;
+      background: $gradientOff;
+      border-radius: 50px;
+      height: 32px;
+      width: 32px;
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &.active {
+      &:after {
+        background: $gradientOn;
+      }
+    }
+    &.unknown {
+      &:after {
+        background: $gradient;
+      }
+    }
+    &:first-child {
+      margin-bottom: 40px;
+      &:after { 
+        box-shadow: 0px 0px 0px;
+        right: 0px;
+        min-width: 70px;
+        content: 'ONLINE';
+        background: transparent;
+      }
+    }
+  }
+}
+
+.list {
+  padding: 30px;
+  background: #F6F6F6;
+  .darkmode & {
+    background: $darkbox;
+  }
+  h3 {
+    padding: 0px;
+  }
+  @media only screen and (min-width: 820px) {
+    border-radius: $radius;
+    padding: 40px;
+  }
+  .two-col {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    justify-content: normal;
+    @media only screen and (min-width: 900px) {
+      margin-bottom: 0px;
+      padding: 30px;
+    }
+    &:first-child {
+      border-bottom: solid 1px #AEAEAE;
+      @media only screen and (min-width: 900px) {
+        border-right: solid 1px #AEAEAE;
+        border-bottom: 0px;
+      }
+    }
+  }
+}
+
+ul {
+  padding-left: 50px;
+  li {
+    font-size: 22px;
+    color: #9F9F9F;
+    .darkmode & {
+      color: white;
+    }
+    line-height: 1.5;
+    list-style: none;
+    position: relative;
+    padding-top: 50px;
+    &.release {
+      &:before {
+        content: '\f4d8';
+      }
+    }
+    &.bug {
+      &:before {
+        content: '\f188';
+      }
+    }
+    &.issue {
+      &:before {
+        content: '\f024';
+      }
+    }
+    &.fun {
+      &:before {
+        content: '\f875';
+      }
+    }
+    &:before {
+      content: '\f466';
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: 300;
+      font-family: $iconfont;
+      position: absolute;
+      z-index: 3;
+      left: -50px;
+      width: 29px;
+      height: 65px;
+      border-radius: $radius;
+      background: $gradient;
+      box-shadow: $inset;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -45px;
+      width: 2px;
+      z-index: 2;
+      left: -36px;
+      height: 100%;
+      background: #AEAEAE;
+    }
+    &:first-child {
+      padding-top: 0px;
+      &:after { 
+        display: none;
+      }
+    }
+    p {
+      margin-top: 0px;
+      font-size: 14px;
+      color: $fontColor;
+      .darkmode & {
+        color: #9F9F9F;
+      }
+    }
+  }
+}
+
+.todo {
+  li {
+    &:before {
+      content: '\f126';
+    }
+  }
+}
+
+footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: $fontColor;
+  .darkmode & {
+    color: $darkmodefont;
+  }
+  @media only screen and (min-width: 820px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+//DATA 
+
+#overlay {
+  position: fixed;
+  top: -100vh; 
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background: $berryPink;
+  .darkmode & {
+    background: $blueberry;
+  }
+  height: 100vh;
+  transition-duration: 0.6s;
+  transition-property: transform, top, bottom;
+  transition-timing-function: ease-in-out;
+  svg {
+    position: absolute;
+    transform-origin: 50% 0%;
+    transform: scaleY(0) scaleX(1.5);
+    transition: all 0.9s ease-in-out;
+    fill: $berryPink;
+    .darkmode & {
+      fill: $blueberry;
+    }
+    height: 100vh;
+    @media only screen and (min-width: 820px) {
+    transform: scaleY(0) scaleX(1);
+    }
+    &.shapeTop {
+      transform: scaleY(1) scaleX(1.5) rotate(180deg);
+      @media only screen and (min-width: 820px) {
+        transform: scaleY(1) scaleX(1) rotate(180deg);
+      }
+    }
+  }
+  .z-index & {
+    z-index: 99;
+  }
+  .show-data & {
+    top: 100vh !important;
+    .shapeTop {
+        transition-delay: 0.4s;
+        transform: scaleY(0) scaleX(1.5) rotate(180deg);
+        @media only screen and (min-width: 820px) {
+          transform: scaleY(0) scaleX(1) rotate(180deg);
+        }
+      }
+  }
+  .load-data & {
+    top: 0;
+    transition-delay: 0.4s;
+    .shape {
+      transform: scaleY(1) scaleX(1.5);
+      @media only screen and (min-width: 820px) {
+        transform: scaleY(1) scaleX(1);
+      }
+      bottom: -100vh;
+    }
+  }
+  .loading {
+    position: absolute;    
+    min-height: 190px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    div {
+      text-align: center;
+      color: white;
+      width: 100%;
+    }
+    p {
+      font-size: 30px;
+      text-align: center;
+      color: $lightBg;    
+      margin: 15px 0px;
+      min-height: 80px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      border: solid 5px $lightBg;
+      border-left: solid 5px transparent;
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      left: calc(50% - 25px);
+      transform: rotate(0deg);
+      transition: $transition;
+      animation: rotating 1s linear infinite;
+    }
+  }
+}
+
+#error {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    text-align: center;
+    padding: 30px 40px;
+    background: $berryPink;
+    .darkmode & {
+      background: $blueberry;;
+    }
+    border-radius: 26px 26px 0px 0px;
+    color: white;
+    max-height: 300px;
+    font-size: 25px;
+    left: 50%;
+    bottom: -400px;
+    transform: translateX(-50%);
+    max-width: 1500px;
+    transition: $transition;
+    &.show {
+      bottom: 0px;
+    }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(170deg);
+  }
+  80% {
+    transform: rotate(190deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#data {
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: $gradient;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    margin: 0 auto;
+    padding: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    &.show {
+      opacity: 1;
+      pointer-events: all;
+      .wrapper {
+        opacity: 1;
+        transition-delay: 0.7s;
+        top: 0;
+      }
+    }
+    .wrapper {    
+      opacity: 0;
+      position: relative;
+      transition: $transition;
+      background: #F1FCFF;
+      .darkmode & {
+        background: $darkbg;
+      }
+      border-radius: 50px;
+      width: calc(100% - 60px);
+      border-radius: 26px;
+      margin: 30px 0px;
+      height: auto;
+      top: -100vh;
+      max-width: 1440px;    
+      display: flex;
+      flex-flow: column;
+      padding: 60px;
+      @media only screen and (min-width: 820px) {
+        margin: 100px 100px 50px 100px;
+      }
+      .data-header {
+        margin-bottom: 50px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        @media only screen and (min-width: 820px) {
+          padding: 20px;
+        }
+        div {    
+          margin: 0;
+          flex-flow: row;
+          display: flex;
+          justify-content: right;
+          a {
+            position: relative;
+            padding: 20px;
+            margin-left: 15px;
+            border-radius: $radius;
+            box-shadow: $inset;
+            border: solid 0.2px $lightColor;
+            //color: #2e2e2e;
+            text-decoration: none;
+            color: $lightColor;  
+            .darkmode & {
+              background: $darkbox;
+              border: solid 0.2px $darkmodeborder;
+              box-shadow: $darkinset;color: $darkmodefont;
+            }
+            span, i {
+              position: relative;
+              z-index: 2;
+              font-size: 18px;
+            }
+            span {
+              display: none;
+              @media only screen and (min-width: 820px) {
+                display: inline;
+              }
+            }
+              transform: scale(1);
+              transition: $transition;
+              &:hover, &.active {
+                .darkmode & {
+                  border: solid 0.2px $darkbg;  
+                }
+                transform: scale(1.05);
+                border: solid 0.2px $lightBlueWhite;            
+                color: white;
+                box-shadow: inset 0px 0px 0px rgb(0 0 0 / 19%);
+                &:after {
+                  opacity: 1;
+              }
+            }
+            &:after {
+              z-index: 1;
+              content: '';
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              background: $berryPinkGradient;
+              .darkmode & {
+                background: $blueberryGradient;
+              }
+              border-radius: $radius;
+              opacity: 0;
+              transition: $transition;
+            }
+          }
+        }
+        #close {
+          width: 200px;
+          text-align: center;
+          border-radius: $radius;
+          background: $gradient;
+          color: white;
+          text-decoration: none;
+          position: relative;
+          font-size: 16px;
+          padding: 15px 25px;
+          box-shadow: $boxshadow;
+          .darkmode & {
+            box-shadow: $darkboxshadow;
+          }
+          @media only screen and (min-width: 820px) {
+            transition: $transition;
+            transform: scale(1);
+            padding: 20px 40px;
+            font-size: 21px;
+            &:after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              right: 0;
+              border-radius: $radius;
+              background: black;
+              opacity: 0;
+              transition: $transition;
+            }
+            &:hover {
+              transform: scale(1.06);
+              &:after {
+                opacity: 1;
+              }
+            }
+          }
+          span {
+            position: relative;
+            z-index: 2;
+          }
+          i {
+            margin-left: 15px;
+          }
+        }
+      }
+      div {
+        width: 100%;
+        word-break: break-all;
+        margin-bottom: 30px;
+      }
+    }
+}
