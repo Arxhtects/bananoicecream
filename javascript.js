@@ -65,7 +65,7 @@ function covertCID(account) {
 }
 
 
-async function getHistroy(account) { 
+async function getHistory(account) { 
   let headerOptions = {receive_only: false, send_only: false, from: false}; //size: false receive_only/send_only/from
   try {
     let response = await axios.post('https://api.spyglass.pw/banano/v2/account/confirmed-transactions', {address: account, size: String(headerOptions.count) }, {signal: abortControl.signal});
@@ -201,7 +201,7 @@ async function getNFTBlocksForAccount(account) {
   let validateInformation = bananoJs.getBananoAccountValidationInfo(account);
   const nftBlocks = [];
   const nftMeta = [];
-  let accHistroy;
+  let accHistory;
   let hashes;
   let hashesSendBlocks;
   let sendBlocksLinked;
@@ -212,29 +212,29 @@ async function getNFTBlocksForAccount(account) {
     return false;
   }
   try {
-    accHistroy = await getAccountHistory(account);
+    accHistory = await getAccountHistory(account);
   } catch(error) {
     doError(error);
     return nftBlocks;
   }
-  hashes = accHistroy.map((data)=> data['hash']);
+  hashes = accHistory.map((data)=> data['hash']);
   //hashes = hashes.reverse();
   //console.log(hashes);
-  accHistroy = await getBlockHashes(hashes);
-  hashesSendBlocks = accHistroy.filter((data)=> data['subtype'] == 'receive');
+  accHistory = await getBlockHashes(hashes);
+  hashesSendBlocks = accHistory.filter((data)=> data['subtype'] == 'receive');
   let reciveTypes = hashesSendBlocks; //grab em
   hashesSendBlocks = hashesSendBlocks.map((data)=> data.contents['link']);
   sendBlocksLinked = await getBlockHashes(hashesSendBlocks);
   //console.log(sendBlocksLinked);
   //document.body.innerHTML = JSON.stringify(reciveTypes, null, 4); //remove after testing
-  for(let i = 0; i < accHistroy.length; i++) {
+  for(let i = 0; i < accHistory.length; i++) {
     let indexSendHash;
     let sendBlock;
     let representative;
     let blockHeight;
     let cidJson;
-    if(accHistroy[i]['subtype'] == 'receive') {
-      indexSendHash = hashesSendBlocks.indexOf(accHistroy[i].contents['link']);
+    if(accHistory[i]['subtype'] == 'receive') {
+      indexSendHash = hashesSendBlocks.indexOf(accHistory[i].contents['link']);
       sendBlock = sendBlocksLinked[indexSendHash];
       representative = sendBlock.contents['representative'];
       blockHeight = sendBlock['height'];
